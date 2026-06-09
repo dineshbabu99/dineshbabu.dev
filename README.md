@@ -163,7 +163,7 @@ npm run preview
 Email: dineshkaru28@gmail.com
 
 LinkedIn:
-https://linkedin.com/in/YOUR-LINKEDIN
+https://linkedin.com/in/dineshbabu-dev
 
 GitHub:
 https://github.com/dineshbabu99
