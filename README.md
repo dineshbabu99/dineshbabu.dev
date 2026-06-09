@@ -4,7 +4,7 @@ A modern enterprise-focused developer portfolio showcasing full-stack developmen
 
 ## 🚀 Live Demo
 
-https://dineshbabu.dev
+https://dineshbabudev.netlify.app/
 
 ## 👨‍💻 About
 
