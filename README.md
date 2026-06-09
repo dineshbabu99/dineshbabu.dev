@@ -1,73 +1,182 @@
-# React + TypeScript + Vite
+# Dinesh Babu Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern enterprise-focused developer portfolio showcasing full-stack development experience, enterprise applications, security systems, and interactive workflow simulations.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://dineshbabu.dev
 
-## React Compiler
+## 👨‍💻 About
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+I'm Dinesh Babu, a Full Stack Developer with 4+ years of experience building enterprise-grade applications using React, Angular, Node.js, and Oracle Database.
 
-## Expanding the ESLint configuration
+My experience includes developing secure and scalable systems for:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Dormitory Management
+- Security Management
+- Compliance & License Tracking
+- Employee Operations
+- Dashboard Automation
+- Role-Based Access Control (RBAC)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Supporting business workflows used by 40,000+ employees.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ✨ Features
+
+### Portfolio Showcase
+- Modern responsive UI
+- Enterprise-themed design
+- Interactive navigation
+- Dark mode interface
+
+### Professional Experience
+- Real-world enterprise projects
+- Business impact metrics
+- Technology breakdown
+- Career highlights
+
+### Enterprise Simulator
+Interactive simulations inspired by real systems:
+
+- Dormitory Housing Management
+- Security Gate Pass Workflow
+- SHA-256 Encryption Demo
+- Compliance & License Tracking
+
+### GitHub Integration
+- Dynamic repository listing
+- Repository search
+- Sorting capabilities
+- Technology indicators
+
+### Contact Section
+- Direct contact form
+- LinkedIn integration
+- GitHub integration
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React
+- TypeScript
+- Redux Toolkit
+- Tailwind CSS
+- Vite
+
+### Backend Knowledge
+- Node.js
+- Express.js
+- REST APIs
+
+### Database
+- Oracle Database
+- PL/SQL
+- MongoDB
+
+### Security
+- Role-Based Access Control (RBAC)
+- SHA-256 Encryption
+- Authentication & Authorization
+- Secure Session Management
+
+### Tools & DevOps
+- Git
+- SVN
+- IIS Server
+- Postman
+
+---
+
+## 📂 Project Structure
+
+```bash
+src/
+├── assets/
+├── components/
+├── pages/
+├── store/
+├── hooks/
+├── services/
+├── types/
+└── utils/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📈 Career Highlights
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- 4+ Years of Enterprise Development Experience
+- Built systems supporting 40,000+ employees
+- Reduced operational processing time by 40%
+- Reduced operational errors by 80%
+- Developed security and compliance platforms
+- Designed scalable business workflow applications
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/dineshbabu99/dineshbabu.dev.git
 ```
+
+Navigate to the project:
+
+```bash
+cd dineshbabu.dev
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview production build:
+
+```bash
+npm run preview
+```
+
+---
+
+## 📬 Contact
+
+Email: dineshkaru28@gmail.com
+
+LinkedIn:
+https://linkedin.com/in/YOUR-LINKEDIN
+
+GitHub:
+https://github.com/dineshbabu99
+
+Location:
+Chennai, India
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+Built with ❤️ using React, TypeScript, Redux Toolkit, and Vite.
