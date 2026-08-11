@@ -13,6 +13,7 @@ export const Navbar: React.FC = () => {
     { id: 'experience', label: 'Experience', icon: Briefcase },
     { id: 'skills', label: 'Skills', icon: FileCode },
     { id: 'simulator', label: 'Enterprise Simulator', icon: Terminal },
+    { id: 'projects', label: 'Projects', icon: FileCode },
     { id: 'contact', label: 'Contact', icon: ShieldAlert },
   ];
 
@@ -29,7 +30,7 @@ export const Navbar: React.FC = () => {
     <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-4 bg-gradient-to-b from-[#050811]/90 to-transparent backdrop-blur-md border-b border-cyber-border">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div 
+        <div
           className="flex items-center space-x-2 cursor-pointer group"
           onClick={() => handleNavClick('home')}
         >
@@ -57,8 +58,8 @@ export const Navbar: React.FC = () => {
                 onClick={() => handleNavClick(item.id)}
                 className={`
                   flex items-center space-x-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 font-display
-                  ${isActive 
-                    ? 'text-cyber-accent bg-cyber-accent/10 border border-cyber-accent/20 shadow-[0_0_15px_rgba(34,211,238,0.05)]' 
+                  ${isActive
+                    ? 'text-cyber-accent bg-cyber-accent/10 border border-cyber-accent/20 shadow-[0_0_15px_rgba(34,211,238,0.05)]'
                     : 'text-cyber-textMuted hover:text-white hover:bg-white/5 border border-transparent'}
                 `}
               >
@@ -79,7 +80,7 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Drawer */}
-      <div 
+      <div
         className={`
           fixed top-[73px] left-0 w-full h-[calc(100vh-73px)] bg-cyber-bg/95 backdrop-blur-xl border-t border-cyber-border z-40 transition-transform duration-300 md:hidden
           ${sidebarOpen ? 'translate-x-0' : 'translate-x-full'}
@@ -95,8 +96,8 @@ export const Navbar: React.FC = () => {
                 onClick={() => handleNavClick(item.id)}
                 className={`
                   flex items-center space-x-3 p-4 rounded-2xl text-left font-display font-medium text-lg transition-all duration-200
-                  ${isActive 
-                    ? 'text-cyber-accent bg-cyber-accent/10 border border-cyber-accent/20 shadow-[0_0_10px_rgba(34,211,238,0.1)]' 
+                  ${isActive
+                    ? 'text-cyber-accent bg-cyber-accent/10 border border-cyber-accent/20 shadow-[0_0_10px_rgba(34,211,238,0.1)]'
                     : 'text-cyber-textMuted hover:text-white hover:bg-white/5 border border-transparent'}
                 `}
               >

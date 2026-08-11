@@ -56,6 +56,14 @@ const fallbackRepos: Repo[] = [
   }
 ];
 
+export const PROJECTS_TO_SHOW = [
+  'SuperBento',
+  'MeetSphere',
+  'Stock-Anomaly-Detector',
+  'StockDemo',
+  'MovieApp'
+];
+
 export const GithubProjects: React.FC = () => {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -72,8 +80,10 @@ export const GithubProjects: React.FC = () => {
           throw new Error('API Rate Limit or Network Error');
         }
         const data = await response.json();
-        
-        const formattedRepos = data.map((repo: any) => ({
+        console.log('Fetched GitHub repos:', data);
+        const formattedRepos = data
+          .filter((repo: any) => PROJECTS_TO_SHOW.includes(repo.name))
+          .map((repo: any) => ({
           id: repo.id,
           name: repo.name,
           description: repo.description,
