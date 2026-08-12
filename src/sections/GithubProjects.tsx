@@ -1,12 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { Star, GitFork, ExternalLink, Search, FolderGit2, AlertCircle } from 'lucide-react';
+import { Star, GitFork, ExternalLink, Search, FolderGit2, AlertCircle, Globe } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
+
+const GithubIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.9 0-1.4-.5-2.5-1.5-3.4.1-.3.1-1.6-.1-3.4 0 0-1.2-.4-3.9 1.4a12.3 12.3 0 0 0-7 0C6 2.7 4.8 3.1 4.8 3.1c-.2 1.8-.2 3.1-.1 3.4-.9.9-1.5 2-1.5 3.4 0 3.9 3 5.9 6 5.9a4.8 4.8 0 0 0-1 3.2v4" />
+    <path d="M9 18c-4.5 1.6-5-2.5-5-2.5" />
+  </svg>
+);
 
 interface Repo {
   id: number;
   name: string;
   description: string | null;
   html_url: string;
+  homepage?: string | null;
   stargazers_count: number;
   forks_count: number;
   language: string | null;
@@ -64,6 +81,14 @@ export const PROJECTS_TO_SHOW = [
   'MovieApp'
 ];
 
+export const CUSTOM_PROJECT_LINKS: Record<string, string> = {
+  'SuperBento': 'https://superbento-erp.netlify.app',
+  'MeetSphere': 'https://meetsphereevent.netlify.app',
+  'Stock-Anomaly-Detector': '',
+  'StockDemo': '',
+  'MovieApp': ''
+};
+
 export const GithubProjects: React.FC = () => {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -84,16 +109,17 @@ export const GithubProjects: React.FC = () => {
         const formattedRepos = data
           .filter((repo: any) => PROJECTS_TO_SHOW.includes(repo.name))
           .map((repo: any) => ({
-          id: repo.id,
-          name: repo.name,
-          description: repo.description,
-          html_url: repo.html_url,
-          stargazers_count: repo.stargazers_count,
-          forks_count: repo.forks_count,
-          language: repo.language,
-          updated_at: repo.updated_at
-        }));
-        
+            id: repo.id,
+            name: repo.name,
+            description: repo.description,
+            html_url: repo.html_url,
+            homepage: CUSTOM_PROJECT_LINKS[repo.name] || repo.homepage,
+            stargazers_count: repo.stargazers_count,
+            forks_count: repo.forks_count,
+            language: repo.language,
+            updated_at: repo.updated_at
+          }));
+
         setRepos(formattedRepos);
       } catch (err) {
         console.error('Error fetching repos, using fallback resume projects:', err);
@@ -108,8 +134,8 @@ export const GithubProjects: React.FC = () => {
   }, []);
 
   const filteredRepos = repos
-    .filter(repo => repo.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                   (repo.description && repo.description.toLowerCase().includes(searchQuery.toLowerCase())))
+    .filter(repo => repo.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (repo.description && repo.description.toLowerCase().includes(searchQuery.toLowerCase())))
     .sort((a, b) => {
       if (sortBy === 'stars') return b.stargazers_count - a.stargazers_count;
       if (sortBy === 'name') return a.name.localeCompare(b.name);
@@ -135,7 +161,7 @@ export const GithubProjects: React.FC = () => {
       <div className="absolute top-1/3 right-10 w-96 h-96 bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
+
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="text-center md:text-left space-y-4">
@@ -210,7 +236,7 @@ export const GithubProjects: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredRepos.map((repo) => (
-              <GlassCard 
+              <GlassCard
                 key={repo.id}
                 className="flex flex-col justify-between h-full text-left relative overflow-hidden group border border-white/5"
               >
@@ -220,15 +246,31 @@ export const GithubProjects: React.FC = () => {
                     <h3 className="font-display font-bold text-white text-base group-hover:text-cyber-accent transition-colors duration-200 truncate">
                       {repo.name.replace(/-/g, ' ')}
                     </h3>
-                    
-                    <a 
-                      href={repo.html_url} 
-                      target="_blank" 
-                      rel="noreferrer"
-                      className="p-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-cyber-accent/50 text-cyber-textMuted hover:text-cyber-accent transition-all duration-200"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+
+                    <div className="flex gap-2">
+                      {repo.homepage && (
+                        <a
+                          href={repo.homepage.startsWith('http') ? repo.homepage : `https://${repo.homepage}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-cyber-accent/50 text-cyber-textMuted hover:text-cyber-accent transition-all duration-200 flex items-center gap-1.5 px-2.5"
+                          title="Visit Website"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          <span className="text-[10px] font-mono">Live Demo</span>
+                        </a>
+                      )}
+                      <a
+                        href={repo.html_url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-cyber-accent/50 text-cyber-textMuted hover:text-cyber-accent transition-all duration-200 flex items-center gap-1.5 px-2.5"
+                        title="View Source Code"
+                      >
+                        <GithubIcon className="w-3.5 h-3.5" />
+                        <span className="text-[10px] font-mono">Code</span>
+                      </a>
+                    </div>
                   </div>
 
                   {repo.language && (
