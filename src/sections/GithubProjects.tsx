@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Star, GitFork, ExternalLink, Search, FolderGit2, AlertCircle, Globe } from 'lucide-react';
+import { Star, GitFork, ExternalLink, Search, FolderGit2, AlertCircle } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 
 const GithubIcon = ({ className }: { className?: string }) => (
