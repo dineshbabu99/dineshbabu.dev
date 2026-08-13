@@ -13,7 +13,7 @@ export const Hero: React.FC = () => {
   };
 
   const handleResumeDownload = () => {
-    window.open('https://drive.google.com/file/d/1m3gjyVWM5XlKuTP3Xq9aeTw9fugXIbZQ/view?usp=sharing', '_blank');
+    window.open('https://drive.google.com/uc?export=download&id=1m3gjyVWM5XlKuTP3Xq9aeTw9fugXIbZQ', '_blank');
   };
 
   const metrics = [
