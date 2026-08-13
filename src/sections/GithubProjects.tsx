@@ -137,6 +137,12 @@ export const GithubProjects: React.FC = () => {
     .filter(repo => repo.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (repo.description && repo.description.toLowerCase().includes(searchQuery.toLowerCase())))
     .sort((a, b) => {
+      const aHasDemo = !!a.homepage;
+      const bHasDemo = !!b.homepage;
+      
+      if (aHasDemo && !bHasDemo) return -1;
+      if (!aHasDemo && bHasDemo) return 1;
+
       if (sortBy === 'stars') return b.stargazers_count - a.stargazers_count;
       if (sortBy === 'name') return a.name.localeCompare(b.name);
       return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
