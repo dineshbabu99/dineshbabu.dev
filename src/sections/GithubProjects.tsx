@@ -86,7 +86,7 @@ export const CUSTOM_PROJECT_LINKS: Record<string, string> = {
   'MeetSphere': 'https://meetsphereevent.netlify.app',
   'Stock-Anomaly-Detector': 'https://stockanomaly.netlify.app',
   'StockDemo': '',
-  'MovieApp': ''
+  'MovieApp': 'https://movielenx.netlify.app/'
 };
 
 export const GithubProjects: React.FC = () => {
@@ -139,7 +139,7 @@ export const GithubProjects: React.FC = () => {
     .sort((a, b) => {
       const aHasDemo = !!a.homepage;
       const bHasDemo = !!b.homepage;
-      
+
       if (aHasDemo && !bHasDemo) return -1;
       if (!aHasDemo && bHasDemo) return 1;
 
