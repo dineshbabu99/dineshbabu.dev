@@ -84,7 +84,7 @@ export const PROJECTS_TO_SHOW = [
 export const CUSTOM_PROJECT_LINKS: Record<string, string> = {
   'SuperBento': 'https://superbento-erp.netlify.app',
   'MeetSphere': 'https://meetsphereevent.netlify.app',
-  'Stock-Anomaly-Detector': '',
+  'Stock-Anomaly-Detector': 'https://stockanomaly.netlify.app',
   'StockDemo': '',
   'MovieApp': ''
 };
