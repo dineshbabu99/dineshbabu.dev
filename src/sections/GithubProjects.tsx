@@ -97,9 +97,9 @@ export const CUSTOM_PROJECT_LINKS: Record<string, string> = {
 export const PROJECT_TECHNOLOGIES: Record<string, string[]> = {
   'SuperBento': ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'Tailwind CSS'],
   'MeetSphere': ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Prisma'],
-  'Stock-Anomaly-Detector': ['React.js', 'Python', 'Flask', 'Machine Learning', 'Tailwind CSS'],
+  'Stock-Anomaly-Detector': ['React', 'TypeScript', 'Node.js', 'Express', 'WebSockets', 'Redux', 'Vite', 'Recharts'],
   'StockDemo': ['React.js', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
-  'MovieApp': ['React.js', 'TMDB API', 'Tailwind CSS', 'Framer Motion'],
+  'MovieApp': ['React.js', 'TMDB API', 'Tailwind CSS'],
   'Dormitory-Management-System': ['React.js', 'Node.js', 'Redux', 'Oracle DB'],
   'Secure-SHA256-Crypto-API': ['Node.js', 'Express.js', 'Cryptography', 'Oracle DB'],
   'POSH-Compliance-Portal': ['React.js', 'Node.js', 'Express.js', 'Oracle DB', 'Tailwind CSS'],
