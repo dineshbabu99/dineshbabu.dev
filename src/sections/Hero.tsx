@@ -12,10 +12,14 @@ export const Hero: React.FC = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const handleResumeDownload = () => {
-    window.open('https://drive.google.com/uc?export=download&id=1m3gjyVWM5XlKuTP3Xq9aeTw9fugXIbZQ', '_blank');
-  };
-
+const handleResumeDownload = () => {
+  const link = document.createElement('a');
+  link.href = 'https://drive.google.com/uc?export=download&id=1qDDHoodJBdf9-tZvjR2fziXV1xBLhFw-';
+  link.download = 'Dinesh_Babu_K_Resume.pdf'; // Suggested filename
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
   const metrics = [
     { label: 'Enterprise Experience', value: '4+ Years', icon: Award, desc: 'Foxconn Hon Hai Tech' },
     { label: 'Dormitory Users', value: '40,000+', icon: Users, desc: 'Accommodation workflow' },
