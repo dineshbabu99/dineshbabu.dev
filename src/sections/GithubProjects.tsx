@@ -27,6 +27,7 @@ interface Repo {
   stargazers_count: number;
   forks_count: number;
   language: string | null;
+  topics?: string[];
   updated_at: string;
 }
 
@@ -39,6 +40,7 @@ const fallbackRepos: Repo[] = [
     stargazers_count: 14,
     forks_count: 3,
     language: 'TypeScript',
+    topics: ['React.js', 'Node.js', 'Redux', 'Oracle DB'],
     updated_at: '2025-12-15T18:30:00Z'
   },
   {
@@ -49,6 +51,7 @@ const fallbackRepos: Repo[] = [
     stargazers_count: 8,
     forks_count: 2,
     language: 'JavaScript',
+    topics: ['Node.js', 'Express.js', 'Cryptography'],
     updated_at: '2025-11-20T10:45:00Z'
   },
   {
@@ -59,6 +62,7 @@ const fallbackRepos: Repo[] = [
     stargazers_count: 11,
     forks_count: 4,
     language: 'TypeScript',
+    topics: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS'],
     updated_at: '2025-10-05T14:15:00Z'
   },
   {
@@ -69,6 +73,7 @@ const fallbackRepos: Repo[] = [
     stargazers_count: 6,
     forks_count: 1,
     language: 'React',
+    topics: ['React.js', 'Node.js', 'Express.js', 'REST APIs'],
     updated_at: '2025-09-12T08:22:00Z'
   }
 ];
@@ -87,6 +92,18 @@ export const CUSTOM_PROJECT_LINKS: Record<string, string> = {
   'Stock-Anomaly-Detector': 'https://stockanomaly.netlify.app',
   'StockDemo': '',
   'MovieApp': 'https://movielenx.netlify.app/'
+};
+
+export const PROJECT_TECHNOLOGIES: Record<string, string[]> = {
+  'SuperBento': ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'Tailwind CSS'],
+  'MeetSphere': ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Prisma'],
+  'Stock-Anomaly-Detector': ['React.js', 'Python', 'Flask', 'Machine Learning', 'Tailwind CSS'],
+  'StockDemo': ['React.js', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
+  'MovieApp': ['React.js', 'TMDB API', 'Tailwind CSS', 'Framer Motion'],
+  'Dormitory-Management-System': ['React.js', 'Node.js', 'Redux', 'Oracle DB'],
+  'Secure-SHA256-Crypto-API': ['Node.js', 'Express.js', 'Cryptography', 'Oracle DB'],
+  'POSH-Compliance-Portal': ['React.js', 'Node.js', 'Express.js', 'Oracle DB', 'Tailwind CSS'],
+  'Visitor-Gate-Pass-Manager': ['React.js', 'Node.js', 'Express.js', 'REST APIs', 'Oracle DB']
 };
 
 export const GithubProjects: React.FC = () => {
@@ -117,6 +134,7 @@ export const GithubProjects: React.FC = () => {
             stargazers_count: repo.stargazers_count,
             forks_count: repo.forks_count,
             language: repo.language,
+            topics: PROJECT_TECHNOLOGIES[repo.name] || repo.topics || [],
             updated_at: repo.updated_at
           }));
 
@@ -157,6 +175,21 @@ export const GithubProjects: React.FC = () => {
       case 'css': return 'bg-purple-500';
       case 'vue': return 'bg-emerald-500';
       case 'python': return 'bg-sky-500';
+      case 'react':
+      case 'react.js': return 'bg-cyan-400';
+      case 'node.js': return 'bg-green-500';
+      case 'mongodb': return 'bg-emerald-600';
+      case 'express':
+      case 'express.js': return 'bg-gray-400';
+      case 'tailwind css': return 'bg-sky-400';
+      case 'next.js': return 'bg-white';
+      case 'postgresql': return 'bg-blue-400';
+      case 'machine learning': return 'bg-orange-400';
+      case 'prisma': return 'bg-teal-500';
+      case 'firebase': return 'bg-yellow-600';
+      case 'redux': return 'bg-purple-600';
+      case 'oracle db': return 'bg-red-500';
+      case 'rest apis': return 'bg-indigo-400';
       default: return 'bg-cyan-500';
     }
   };
@@ -279,12 +312,23 @@ export const GithubProjects: React.FC = () => {
                     </div>
                   </div>
 
-                  {repo.language && (
-                    <div className="flex items-center space-x-1.5 mt-2">
-                      <span className={`w-2 h-2 rounded-full ${getLanguageColor(repo.language)}`}></span>
-                      <span className="text-[10px] font-mono text-cyber-textMuted">{repo.language}</span>
+                  {repo.topics && repo.topics.length > 0 ? (
+                    <div className="flex flex-wrap items-center gap-2 mt-3">
+                      {repo.topics.map((topic, index) => (
+                        <div key={index} className="flex items-center space-x-1.5 bg-white/5 border border-white/10 px-2 py-1 rounded-md">
+                          <span className={`w-1.5 h-1.5 rounded-full ${getLanguageColor(topic)}`}></span>
+                          <span className="text-[10px] font-mono text-cyber-textMuted whitespace-nowrap">{topic}</span>
+                        </div>
+                      ))}
                     </div>
-                  )}
+                  ) : repo.language ? (
+                    <div className="flex flex-wrap items-center gap-2 mt-3">
+                      <div className="flex items-center space-x-1.5 bg-white/5 border border-white/10 px-2 py-1 rounded-md">
+                        <span className={`w-1.5 h-1.5 rounded-full ${getLanguageColor(repo.language)}`}></span>
+                        <span className="text-[10px] font-mono text-cyber-textMuted whitespace-nowrap">{repo.language}</span>
+                      </div>
+                    </div>
+                  ) : null}
 
                   <p className="text-xs text-cyber-textMuted mt-4 leading-relaxed line-clamp-3">
                     {repo.description || 'No description provided for this repository.'}
